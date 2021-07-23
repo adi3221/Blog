@@ -1,8 +1,8 @@
 from django.contrib import admin
 from django.urls import path
 from blog import views
-# from django.conf import settings
-# from django.conf.urls.static import static
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -16,4 +16,4 @@ urlpatterns = [
     path('addpost/', views.add_post, name='addpost'),
     path('updatepost/<int:id>/', views.update_post, name='updatepost'),
     path('delete/<int:id>/', views.delete_post, name='deletepost'),
-]
+]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
